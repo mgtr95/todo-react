@@ -1,0 +1,17 @@
+li {
+    list-style-type: none
+}
+
+.item {
+    margin: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    margin: 0 8px;
+}
+
+.checked {
+    text-decoration: line-through;
+}

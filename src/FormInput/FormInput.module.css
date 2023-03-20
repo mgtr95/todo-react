@@ -1,4 +1,9 @@
 .form {
     display: flex;
     gap: 1em;
+    width: 100%;
+}
+
+.form > input {
+    width: 100%;
 }
