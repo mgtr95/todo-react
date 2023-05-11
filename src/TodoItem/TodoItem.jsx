@@ -1,19 +1,19 @@
 import Button from "react-bootstrap/Button";
+import { TodoType } from "../utilities/constants";
 import styles from "./TodoItem.module.css";
 
-export default function TodoItem({ todo, onTodoChange }) {
-
-    function handleChange () {
-        onTodoChange(todo.id);
+function TodoItem({ todo, onTodoChange }) {
+    function handleChange() {
+        onTodoChange(todo.id, TodoType.TOGGLE_COMPLETED);
     }
 
-    function handleClick () {
-
+    function handleClick() {
+        onTodoChange(todo.id, TodoType.DELETE);
     }
 
     return (
         <li className={styles.item}>
-            <label className={todo.completed? styles.checked:styles.unchecked}>
+            <label className={todo.completed ? styles.checked : undefined}>
                 <input
                     type="checkbox"
                     checked={todo.completed}
@@ -21,7 +21,11 @@ export default function TodoItem({ todo, onTodoChange }) {
                 />
                 <span className={styles.text}>{todo.text}</span>
             </label>
-            <Button onClick={handleChange} type="button">✕</Button>
+            <Button type="button" onClick={handleClick}>
+                &#10005;
+            </Button>
         </li>
     );
 }
+
+export default TodoItem;

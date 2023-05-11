@@ -1,43 +1,83 @@
-import React from "react";
 import "./App.css";
-import InputForm from "./FormInput/InputForm";
+import React from "react";
+import FormInput from "./FormInput/FormInput";
 import TodoList from "./TodoList/TodoList";
+import { TodoType, VisibilityType } from "./utilities/constants";
+import VisibiltyToolbar from "./VisibiltyToolbar/VisibiltyToolbar";
+import { Button } from "react-bootstrap";
 
 class App extends React.Component {
     state = {
         todos: [],
+        visibility: VisibilityType.ALL,
     };
 
     handleNewTodo = (newTodo) => {
-        this.setState({
-            todos: [...this.state.todos, newTodo],
-        });
+        const newTodos = [...this.state.todos, newTodo];
+        this.setState({ todos: newTodos });
     };
 
-    handleTodoCompletedChange = (id) => {
+    handleTodoChange = (id, type) => {
+        const { todos } = this.state;
+
         let newTodos = null;
-        if (type === "COMPLETED") {
-            newTodos = this.state.todos.map((todo) => {
+        if (type === TodoType.TOGGLE_COMPLETED) {
+            newTodos = todos.map((todo) => {
                 if (todo.id === id) {
                     return { ...todo, completed: !todo.completed };
                 } else {
                     return todo;
                 }
             });
-        } else {
-          
+        } else if (type === TodoType.DELETE) {
+            newTodos = todos.filter((todo) => todo.id !== id);
         }
+
+        this.setState({ todos: newTodos });
+    };
+
+    handleVisibiltyChange = (type) => {
+        this.setState({ visibility: type });
+    };
+
+    getVisibleTodos = () => {
+        const { visibility, todos } = this.state;
+
+        if (visibility === VisibilityType.ACTIVE) {
+            return todos.filter((todo) => !todo.completed);
+        } else if (visibility === VisibilityType.COMPLETED) {
+            return todos.filter((todo) => todo.completed);
+        } else {
+            return todos;
+        }
+    };
+
+    handleRemoveCompleted = () => {
+        const newTodos = this.state.todos.filter((todo) => !todo.completed);
         this.setState({ todos: newTodos });
     };
 
     render() {
+        const visibleTodos = this.getVisibleTodos();
+        const hasCompletedTodos = this.state.todos.find(
+            (todo) => todo.completed
+        );
+
         return (
             <div className="app">
-                <InputForm handleFormSubmit={this.handleNewTodo} />
-                <TodoList
-                    todos={this.state.todos}
-                    onTodoChange={this.handleTodoCompletedChange}
+                <VisibiltyToolbar
+                    onVisibiltyChange={this.handleVisibiltyChange}
                 />
+                <FormInput handleFormSubmit={this.handleNewTodo} />
+                <TodoList
+                    todos={visibleTodos}
+                    onTodoChange={this.handleTodoChange}
+                />
+                {hasCompletedTodos && (
+                    <Button onClick={this.handleRemoveCompleted}>
+                        Clear completed
+                    </Button>
+                )}
             </div>
         );
     }

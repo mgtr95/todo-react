@@ -3,15 +3,17 @@ import Button from "react-bootstrap/Button";
 import { nanoid } from "nanoid";
 import { useState } from "react";
 
-export default function InputForm({ handleFormSubmit }) {
+function FormInput({ handleFormSubmit }) {
     const [textValue, setTextValue] = useState("");
 
-    function handleSubmit(event) {
-        event.preventDefault();
+    function handleSubmit(e) {
+        e.preventDefault();
 
-        if (textValue.trim() === "") return;
+        if (textValue.trim() === "") {
+            return;
+        }
 
-        const todo = { text: textValue, id: nanoid(), completed: false };
+        const todo = { id: nanoid(), text: textValue, completed: false };
         handleFormSubmit(todo);
         setTextValue("");
     }
@@ -25,7 +27,7 @@ export default function InputForm({ handleFormSubmit }) {
         <form onSubmit={handleSubmit}>
             <div className={styles.form}>
                 <input
-                    autoFocus
+                    autoFocus={true}
                     type="text"
                     value={textValue}
                     onChange={handleChange}
@@ -35,3 +37,5 @@ export default function InputForm({ handleFormSubmit }) {
         </form>
     );
 }
+
+export default FormInput;

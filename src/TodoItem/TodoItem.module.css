@@ -1,11 +1,8 @@
-li {
-    list-style-type: none
-}
-
 .item {
     margin: 12px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .text {
