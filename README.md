@@ -14,24 +14,24 @@ To use this app locally, you can follow these steps:
 ## Features
 Here are the features of this app:
 
--Add a new task
--Mark a task as done
--Delete a task
--See how many tasks are remaining to be completed
+- Add a new task
+- Mark a task as done
+- Delete a task
+- See how many tasks are remaining to be completed
 
 ## Technologies Used
 This app was built using the following technologies:
 
--React
--HTML/CSS
--Netlify
+- React
+- HTML/CSS
+- Netlify
 
 ## Future Enhancements
 Here are some possible enhancements that can be made to this app in the future:
 
--Add the ability to edit a task
--Implement user authentication to allow multiple users to use the app
--Save the tasks to a database so they persist between sessions
+- Add the ability to edit a task
+- Implement user authentication to allow multiple users to use the app
+- Save the tasks to a database so they persist between sessions
 
 ## Contributing
 If you'd like to contribute to this project, feel free to submit a pull request with your changes.
