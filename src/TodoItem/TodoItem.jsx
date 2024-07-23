@@ -13,17 +13,19 @@ function TodoItem({ todo, onTodoChange }) {
 
     return (
         <li className={styles.item}>
-            <label className={todo.completed ? styles.checked : undefined}>
+            <label>
                 <input
                     type="checkbox"
                     checked={todo.completed}
                     onChange={handleChange}
                 />
-                <span className={styles.text}>{todo.text}</span>
+                
             </label>
+            <p className={`${todo.completed ? styles.checked : undefined} ${styles.text}`}>{todo.text}</p>
             <Button type="button" onClick={handleClick}>
                 &#10005;
             </Button>
+            
         </li>
     );
 }

@@ -12,6 +12,21 @@ class App extends React.Component {
         visibility: VisibilityType.ALL,
     };
 
+    componentDidMount() {
+        // Load todos from localStorage when the component mounts
+        const savedTodos = localStorage.getItem("todos");
+        if (savedTodos) {
+            this.setState({ todos: JSON.parse(savedTodos) });
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // Save todos to localStorage whenever they change
+        if (prevState.todos !== this.state.todos) {
+            localStorage.setItem("todos", JSON.stringify(this.state.todos));
+        }
+    }
+
     handleNewTodo = (newTodo) => {
         const newTodos = [...this.state.todos, newTodo];
         this.setState({ todos: newTodos });

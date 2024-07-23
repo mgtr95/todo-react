@@ -1,14 +1,18 @@
 .item {
-    margin: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: content-box;
 }
 
 .text {
-    margin: 0 8px;
+  margin: 0 8px;
+  text-align: left;
+  word-wrap: break-word;
 }
 
 .checked {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
