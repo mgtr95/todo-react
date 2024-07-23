@@ -1,7 +1,7 @@
 # Simple To Do App with React
 This is a simple To Do app built with React. You can use it to create a list of tasks that you need to complete and mark them as done when you finish them. The app is hosted on Netlify, so you can access it from anywhere with an internet connection.
 
-Project site - https://simpletodo-reactapp.netlify.app/
+Project site - https://very-simple-todo.netlify.app/
 
 ## Getting Started
 To use this app locally, you can follow these steps:
