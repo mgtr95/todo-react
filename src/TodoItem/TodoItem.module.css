@@ -16,3 +16,8 @@
 .checked {
   text-decoration: line-through;
 }
+
+.checkbox {
+  width: 28px;
+  height: 28px;
+}

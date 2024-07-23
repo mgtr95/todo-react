@@ -15,6 +15,7 @@ function TodoItem({ todo, onTodoChange }) {
         <li className={styles.item}>
             <label>
                 <input
+                    className={styles.checkbox}
                     type="checkbox"
                     checked={todo.completed}
                     onChange={handleChange}
